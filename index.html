@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Resume + Interview Coach</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="bg-[#030014] text-gray-100 min-h-screen relative bg-grid">
+
+  <!-- Background Ambient Glows -->
+  <div class="glow-orb orb-primary w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] top-[-100px] left-[-100px]"></div>
+  <div class="glow-orb orb-secondary w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] top-[400px] right-[-100px]"></div>
+  <div class="glow-orb orb-accent w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bottom-[-100px] left-[30%]"></div>
+
+  <!-- Header Navigation -->
+  <header class="w-full border-b border-white/[0.06] backdrop-blur-md sticky top-0 z-50 bg-[#030014]/65">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group transition-all">
+        <div
+          class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:rotate-6 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+          </svg>
+        </div>
+        <span
+          class="font-display font-bold text-lg tracking-wide bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:text-purple-300 transition-colors">AI
+          Coach</span>
+      </a>
+
+      <!-- Desktop Navigation Items -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#"
+          class="text-xs font-mono font-medium tracking-wider text-gray-400 hover:text-white transition duration-200">HOME</a>
+        <a href="#features-section"
+          class="text-xs font-mono font-medium tracking-wider text-gray-400 hover:text-white transition duration-200">FEATURES</a>
+        <a href="#resume-analyzer-section"
+          class="text-xs font-mono font-medium tracking-wider text-gray-400 hover:text-white transition duration-200">RESUME
+          ANALYZER</a>
+        <a href="#interview-generator-section"
+          class="text-xs font-mono font-medium tracking-wider text-gray-400 hover:text-white transition duration-200">INTERVIEW
+          COACH</a>
+      </nav>
+
+      <!-- Right System Badge & Mobile Burger Menu -->
+      <div class="flex items-center gap-3">
+        <span
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium glass-panel border border-cyan-500/30 text-cyan-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          ACTIVE CO-PILOT
+        </span>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-toggle"
+          class="md:hidden p-2 rounded-lg bg-white/[0.02] border border-white/[0.08] text-gray-400 hover:text-white hover:bg-white/[0.04] transition duration-200 cursor-pointer"
+          aria-label="Toggle Mobile Menu">
+          <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+          <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="18" x2="6" y1="6" y2="18"></line>
+            <line x1="6" x2="18" y1="6" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation Panel -->
+    <div id="mobile-navigation-dropdown"
+      class="hidden md:hidden border-t border-white/[0.06] bg-[#030014]/95 backdrop-blur-lg absolute w-full left-0 py-4 px-6 space-y-2 shadow-2xl transition duration-300">
+      <div class="flex flex-col gap-1">
+        <a href="#"
+          class="mobile-nav-link block text-xs font-mono font-medium tracking-widest text-gray-400 hover:text-white transition py-2.5 border-b border-white/[0.02]">HOME</a>
+        <a href="#features-section"
+          class="mobile-nav-link block text-xs font-mono font-medium tracking-widest text-gray-400 hover:text-white transition py-2.5 border-b border-white/[0.02]">FEATURES</a>
+        <a href="#resume-analyzer-section"
+          class="mobile-nav-link block text-xs font-mono font-medium tracking-widest text-gray-400 hover:text-white transition py-2.5 border-b border-white/[0.02]">RESUME
+          ANALYZER</a>
+        <a href="#interview-generator-section"
+          class="mobile-nav-link block text-xs font-mono font-medium tracking-widest text-gray-400 hover:text-white transition py-2.5">INTERVIEW
+          COACH</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-20 relative z-10 flex flex-col items-center">
+
+    <!-- Hero Section -->
+    <section class="w-full text-center mb-16 md:mb-24 flex flex-col items-center">
+      <!-- Badge -->
+      <div
+        class="mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium glass-panel border border-purple-500/30 text-purple-300 hover:border-purple-400/40 transition-colors duration-300">
+        ✨ MULTI-MODAL PROFESSIONAL CAREER ACCELERATOR
+      </div>
+
+      <!-- Giant Animated Display Title -->
+      <h1
+        class="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl leading-[1.1] tracking-tighter mb-8 max-w-4xl filter drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+        <span class="bg-gradient-to-b from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">AI Resume
+          +</span> <br class="sm:hidden" />
+        <span
+          class="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(168,85,247,0.25)] select-none">Interview
+          Coach</span>
+      </h1>
+
+      <!-- Premium Descriptive Subtitle -->
+      <p class="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+        Improve your resume, generate interview questions, and optimize your LinkedIn profile using AI. Get immediate
+        metrics and bulletproof optimizations.
+      </p>
+
+      <!-- Dynamic CTA & Highlight Flow -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 justify-center w-full max-w-md">
+        <button id="cta-btn"
+          class="btn-glow px-8 py-4 w-full sm:w-auto bg-gradient-to-r from-purple-600 to-cyan-500 rounded-xl font-display font-bold text-base hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-xl shadow-purple-500/10 hover:shadow-cyan-500/20 cursor-pointer flex items-center justify-center gap-2.5">
+          <span>Try AI Coach</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+
+
+
+    <!-- Core Features Section -->
+    <section id="features-section" class="w-full mb-20 relative">
+      <!-- Section Header -->
+      <div class="text-center mb-12 text-center flex flex-col items-center">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-950/40 px-3 py-1 rounded-full border border-purple-800/30 mb-3">
+          Elite Capabilities
+        </span>
+        <h2
+          class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-br from-white via-slate-100 to-neutral-400 bg-clip-text text-transparent tracking-tighter mb-4">
+          Engineered For Modern Careers
+        </h2>
+        <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+          Our autonomous platform operates across critical high-impact professional vectors to guarantee interview
+          pipelines.
+        </p>
+      </div> <!-- 4-Grid Feature Layout -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1: Resume Analyzer -->
+        <div data-scroll-target="resume-analyzer-section"
+          class="glass-panel glass-panel-hover p-6 rounded-2xl relative overflow-hidden group border border-white/[0.04] cursor-pointer hover:border-cyan-500/30 transition-all duration-300 transform active:scale-[0.98]">
+          <div
+            class="absolute -right-6 -bottom-6 w-20 h-20 bg-purple-500/5 rounded-full blur-xl group-hover:bg-purple-500/10 transition-colors">
+          </div>
+          <!-- Icon -->
+          <div
+            class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-5 text-purple-400 group-hover:scale-110 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+              <polyline points="14 2 14 8 20 8" />
+              <path d="M8 13h8" />
+              <path d="M8 17h8" />
+              <path d="M10 9H8" />
+            </svg>
+          </div>
+          <!-- Content -->
+          <h3 class="font-display font-bold text-lg mb-2 text-white group-hover:text-purple-300 transition-colors">
+            Resume Analyzer
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+            Deconstruct bullet points and key skills to automatically align with targeted ATS parsers and core
+            requirements.
+          </p>
+        </div>
+
+        <!-- Card 2: LinkedIn Headline Generator -->
+        <div data-scroll-target="linkedin-generator-section"
+          class="glass-panel glass-panel-hover p-6 rounded-2xl relative overflow-hidden group border border-white/[0.04] cursor-pointer hover:border-purple-500/30 transition-all duration-300 transform active:scale-[0.98]">
+          <div
+            class="absolute -right-6 -bottom-6 w-20 h-20 bg-cyan-500/5 rounded-full blur-xl group-hover:bg-cyan-500/10 transition-colors">
+          </div>
+          <!-- Icon -->
+          <div
+            class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <!-- Content -->
+          <h3 class="font-display font-bold text-lg mb-2 text-white group-hover:text-cyan-300 transition-colors">
+            LinkedIn headline
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+            Incorporate critical recruiter-search indexes, active power phrases, and clear professional focus states.
+          </p>
+        </div>
+
+        <!-- Card 3: Interview Question Generator -->
+        <div data-scroll-target="interview-generator-section"
+          class="glass-panel glass-panel-hover p-6 rounded-2xl relative overflow-hidden group border border-white/[0.04] cursor-pointer hover:border-emerald-500/30 transition-all duration-300 transform active:scale-[0.98]">
+          <div
+            class="absolute -right-6 -bottom-6 w-20 h-20 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/10 transition-colors">
+          </div>
+          <!-- Icon -->
+          <div
+            class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+          </div>
+          <!-- Content -->
+          <h3 class="font-display font-bold text-lg mb-2 text-white group-hover:text-emerald-300 transition-colors">
+            Question Generator
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+            Compile challenging real-world coding challenges and behavior criteria customized around your niche.
+          </p>
+        </div>
+
+        <!-- Card 4: Mock Interview Chatbot -->
+        <div data-scroll-target="mock-chatbot-section"
+          class="glass-panel glass-panel-hover p-6 rounded-2xl relative overflow-hidden group border border-white/[0.04] cursor-pointer hover:border-amber-500/30 transition-all duration-300 transform active:scale-[0.98]">
+          <div
+            class="absolute -right-6 -bottom-6 w-20 h-20 bg-amber-500/5 rounded-full blur-xl group-hover:bg-amber-500/10 transition-colors">
+          </div>
+          <!-- Icon -->
+          <div
+            class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-5 text-amber-400 group-hover:scale-110 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <!-- Content -->
+          <h3 class="font-display font-bold text-lg mb-2 text-white group-hover:text-amber-300 transition-colors">
+            Interview Chatbot
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+            Simulate high-stakes live virtual interviews with a smart persona who probes deep into system designs.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dedicated Premium Resume Analyzer Section -->
+    <section id="resume-analyzer-section" class="w-full mb-20 relative">
+      <div class="absolute -top-1/2 -left-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Section Header -->
+      <div class="text-center mb-12 text-center flex flex-col items-center">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/40 px-3 py-1 rounded-full border border-cyan-800/30 mb-3">
+          Deep Scan Engine
+        </span>
+        <h2
+          class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-br from-white via-slate-100 to-neutral-400 bg-clip-text text-transparent tracking-tighter mb-4">
+          ATS Resume Analyzer
+        </h2>
+        <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+          Upload or paste your professional CV draft below to test against state-of-the-art ATS algorithms instantly.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- Left Column: Input Form -->
+        <div
+          class="lg:col-span-5 flex flex-col justify-between glass-panel p-6 sm:p-8 rounded-3xl border border-white/[0.06]">
+          <div>
+            <div class="mb-5">
+              <label for="analyzer-job-title"
+                class="block font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-2.5">
+                Target Job Title / Field:
+              </label>
+              <input id="analyzer-job-title" type="text"
+                class="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/40 focus:shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all"
+                value="Senior Software Engineer" placeholder="e.g. Frontend Developer, Product Manager" />
+            </div>
+
+            <div class="mb-6">
+              <label for="analyzer-textarea"
+                class="block font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-2.5">
+                Paste Raw Resume Text:
+              </label>
+              <textarea id="analyzer-textarea" rows="8"
+                class="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-4 text-xs sm:text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/40 focus:shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all resize-none leading-relaxed"
+                placeholder="Paste your resume contents or copy-paste text blocks here..."></textarea>
+            </div>
+          </div>
+
+          <button id="analyze-resume-btn"
+            class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 active:scale-[0.99] font-display font-semibold text-white/90 hover:text-white transition-all duration-300 shadow-md shadow-cyan-900/10 hover:shadow-lg hover:shadow-cyan-700/20 cursor-pointer flex items-center justify-center gap-2">
+            <span>Analyze Resume</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Right Column: AI Analysis Result Output -->
+        <div
+          class="lg:col-span-7 flex flex-col justify-center glass-panel p-6 sm:p-8 rounded-3xl border border-white/[0.06] relative min-h-[400px]">
+
+          <!-- Idle Placeholder -->
+          <div id="analyzer-idle-state" class="w-full flex flex-col items-center justify-center text-center p-6">
+            <div
+              class="w-14 h-14 rounded-full bg-cyan-950/20 border border-cyan-500/10 flex items-center justify-center text-cyan-400 mb-5 animate-float">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2">Ready to Scan</h3>
+            <p class="text-xs sm:text-sm text-gray-400 max-w-sm leading-relaxed">
+              Click <strong>"Analyze Resume"</strong> to parse keyword density, syntax quality, and formatting standards
+              with immediate visual telemetry response.
+            </p>
+          </div>
+
+          <!-- Loader Screen -->
+          <div id="analyzer-loader" class="hidden w-full flex flex-col items-center justify-center text-center py-10">
+            <div class="relative w-20 h-20 mb-8">
+              <div class="absolute inset-0 rounded-full border-4 border-cyan-500/10"></div>
+              <div
+                class="absolute inset-0 rounded-full border-4 border-t-cyan-400 border-r-transparent animate-spin [animation-duration:1.2s]">
+              </div>
+              <div class="absolute inset-3 rounded-full border-4 border-purple-500/10"></div>
+              <div
+                class="absolute inset-3 rounded-full border-4 border-b-purple-500 border-l-transparent animate-spin [animation-duration:0.8s] [animation-direction:reverse]">
+              </div>
+            </div>
+            <p class="font-mono text-xs font-semibold uppercase tracking-widest text-cyan-400 animate-pulse">Running
+              Neural ATS Simulator...</p>
+            <div class="text-[10px] text-gray-500 mt-3 font-mono" id="analyzer-loader-step">Parsing Section Weights...
+            </div>
+          </div>
+
+          <!-- Result State -->
+          <div id="analyzer-result-card" class="hidden w-full space-y-6">
+
+            <!-- Metrics Panel: ATS Score and basic indicators -->
+            <div class="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-white/[0.06]">
+              <!-- ATS Score Gauge -->
+              <div
+                class="relative w-28 h-28 flex items-center justify-center bg-white/[0.01] rounded-full border-2 border-dashed border-cyan-500/20 shadow-inner">
+                <div
+                  class="absolute inset-2 bg-gradient-to-tr from-cyan-950/30 to-purple-950/30 rounded-full flex flex-col items-center justify-center">
+                  <span id="result-ats-score"
+                    class="font-display font-bold text-3xl text-gradient-purple-cyan">84</span>
+                  <span class="text-[9px] font-mono font-bold text-gray-500 uppercase tracking-widest leading-none">ATS
+                    SCORE</span>
+                </div>
+              </div>
+
+              <div class="text-center sm:text-left flex-1">
+                <div id="result-match-status"
+                  class="inline-flex px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 mb-2">
+                  ✓ GOOD FOUNDATION
+                </div>
+                <h4 class="font-display font-bold text-lg text-white">ATS Score Assessment</h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">
+                  This document achieves decent foundational alignment but has critical keyword density gaps and
+                  outdated syntax metrics that hold it back.
+                </p>
+              </div>
+            </div>
+
+            <!-- Missing Skills Grid -->
+            <div>
+              <h5 class="font-mono text-[11px] font-bold tracking-wider text-amber-300 uppercase mb-3">⚠️ Missing
+                High-Yield Skills & Keywords:</h5>
+              <div id="result-missing-skills" class="flex flex-wrap gap-2">
+                <!-- Skills badges uploaded here -->
+              </div>
+            </div>
+
+            <!-- Two-Column Advice Checklist -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+              <!-- Resume Improvements Column -->
+              <div class="space-y-3">
+                <h6 class="font-display font-bold text-sm text-cyan-300 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  Resume Improvements
+                </h6>
+                <ul id="result-improvements-list"
+                  class="space-y-2.5 text-xs text-gray-300 leading-relaxed list-none pl-0">
+                  <!-- Loaded dynamically -->
+                </ul>
+              </div>
+
+              <!-- Formatting Suggestions Column -->
+              <div class="space-y-3">
+                <h6 class="font-display font-bold text-sm text-purple-300 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                    <line x1="9" y1="9" x2="15" y2="9" />
+                    <line x1="9" y1="13" x2="15" y2="13" />
+                    <line x1="9" y1="17" x2="13" y2="17" />
+                  </svg>
+                  Formatting Suggestions
+                </h6>
+                <ul id="result-formatting-list"
+                  class="space-y-2.5 text-xs text-gray-300 leading-relaxed list-none pl-0">
+                  <!-- Loaded dynamically -->
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dedicated Premium LinkedIn Headline Generator Section -->
+    <section id="linkedin-generator-section" class="w-full mb-20 relative">
+      <div class="absolute -top-1/2 -right-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none">
+      </div>
+
+      <!-- Section Header -->
+      <div class="text-center mb-12 text-center flex flex-col items-center">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase bg-purple-950/40 px-3 py-1 rounded-full border border-purple-800/30 mb-3">
+          Recruiter Positioning Engine
+        </span>
+        <h2
+          class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-br from-white via-slate-100 to-neutral-400 bg-clip-text text-transparent tracking-tighter mb-4">
+          LinkedIn Headline Generator
+        </h2>
+        <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+          Convert dull bio descriptions into high-conversion executive headlines optimized for recruiter search
+          algorithms.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- Left Column: Settings and Input -->
+        <div
+          class="lg:col-span-5 flex flex-col justify-between glass-panel p-6 sm:p-8 rounded-3xl border border-white/[0.06]">
+          <div class="space-y-5">
+            <div>
+              <label for="headline-role-input"
+                class="block font-mono text-xs font-semibold uppercase tracking-wider text-purple-300 mb-2.5">
+                Your Target Professional Role:
+              </label>
+              <input id="headline-role-input" type="text"
+                class="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/40 focus:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all"
+                value="Full Stack Software Engineer" placeholder="e.g. Product Manager, UI/UX Designer, Data Analyst" />
+            </div>
+
+            <div>
+              <label for="headline-skills-input"
+                class="block font-mono text-xs font-semibold uppercase tracking-wider text-purple-300 mb-2.5">
+                Core Skills or Focus (comma separated):
+              </label>
+              <input id="headline-skills-input" type="text"
+                class="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/40 focus:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all"
+                value="React, Node.js, AWS Cloud, Python" placeholder="e.g. Figma, Agile, SQL, Machine Learning" />
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs font-semibold uppercase tracking-wider text-purple-300 mb-2.5">
+                Core Positioning Accent:
+              </label>
+              <div class="grid grid-cols-3 gap-2.5">
+                <button id="accent-highimpact"
+                  class="headline-accent-btn px-2.5 py-2.5 bg-purple-500/10 border border-purple-500/40 text-purple-300 rounded-xl text-xs font-medium hover:bg-purple-500/20 transition-all cursor-pointer">
+                  High Impact
+                </button>
+                <button id="accent-growth"
+                  class="headline-accent-btn px-2.5 py-2.5 bg-white/[0.01] border border-white/[0.08] text-gray-400 rounded-xl text-xs font-medium hover:bg-white/[0.03] hover:border-white/[0.15] transition-all cursor-pointer">
+                  Metrics / KPIs
+                </button>
+                <button id="accent-creative"
+                  class="headline-accent-btn px-2.5 py-2.5 bg-white/[0.01] border border-white/[0.08] text-gray-400 rounded-xl text-xs font-medium hover:bg-white/[0.03] hover:border-white/[0.15] transition-all cursor-pointer">
+                  Modern / Creative
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button id="generate-headlines-btn"
+            class="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 active:scale-[0.99] font-display font-bold text-white/90 hover:text-white transition-all duration-300 shadow-md shadow-purple-900/20 hover:shadow-lg hover:shadow-purple-700/20 cursor-pointer flex items-center justify-center gap-2">
+            <span>Generate Headline Variations</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Right Column: Outputs -->
+        <div
+          class="lg:col-span-7 flex flex-col justify-center glass-panel p-6 sm:p-8 rounded-3xl border border-white/[0.06] relative min-h-[400px]">
+
+          <!-- Idle State -->
+          <div id="headline-idle-state" class="w-full flex flex-col items-center justify-center text-center p-6">
+            <div
+              class="w-14 h-14 rounded-full bg-purple-950/20 border border-purple-500/10 flex items-center justify-center text-purple-400 mb-5 animate-float">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2">Headline Architect Sandbox</h3>
+            <p class="text-xs sm:text-sm text-gray-400 max-w-sm leading-relaxed">
+              Click <strong>"Generate Headline Variations"</strong> to create structured executive taglines built to
+              dominate recruiter feeds.
+            </p>
+          </div>
+
+          <!-- Launcher Loader -->
+          <div id="headline-loader" class="hidden w-full flex flex-col items-center justify-center text-center py-10">
+            <div class="relative w-20 h-20 mb-8">
+              <div class="absolute inset-0 rounded-full border-4 border-purple-500/10"></div>
+              <div
+                class="absolute inset-0 rounded-full border-4 border-t-purple-500 border-r-transparent animate-spin [animation-duration:1.2s]">
+              </div>
+              <div class="absolute inset-3 rounded-full border-4 border-cyan-500/10"></div>
+              <div
+                class="absolute inset-3 rounded-full border-4 border-b-cyan-400 border-l-transparent animate-spin [animation-duration:0.8s] [animation-direction:reverse]">
+              </div>
+            </div>
+            <p class="font-mono text-xs font-semibold uppercase tracking-widest text-purple-400 animate-pulse">Engaging
+              Semantic Builder...</p>
+            <div class="text-[10px] text-gray-500 mt-3 font-mono" id="headline-loader-step">Embedding Keyword
+              Modulations...</div>
+          </div>
+
+          <!-- Result Cards List -->
+          <div id="headline-results-container" class="hidden w-full space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-white/[0.06] mb-2">
+              <h4 class="font-display font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                Recommended Executive Headlines
+              </h4>
+              <span
+                class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/30">ATS
+                Compliant</span>
+            </div>
+
+            <!-- Output cards are injected here -->
+            <div id="headline-cards" class="space-y-4">
+              <!-- Loaded Dynamically -->
+            </div>
+
+            <!-- Tip Callout -->
+            <div
+              class="mt-4 pt-4 border-t border-white/[0.06] text-xs text-purple-300 bg-purple-950/20 px-4 py-3.5 rounded-xl border border-purple-500/20 leading-relaxed flex gap-2.5 items-start">
+              <span>💡</span>
+              <p>
+                <strong>Coach Tip:</strong> Headlines containing metrics (e.g. <em>"$2M saved"</em> or <em>"3x speed
+                  boost"</em>) increase recruiter click-through rates by up to <strong>142%</strong> over general
+                descriptive titles.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dedicated Premium Interview Question Generator Section -->
+    <section id="interview-generator-section" class="w-full mb-20 relative">
+      <div class="absolute -top-1/2 -left-1/2 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none">
+      </div>
+
+      <!-- Section Header -->
+      <div class="text-center mb-12 text-center flex flex-col items-center">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-800/30 mb-3">
+          Real Scenario Sandbox
+        </span>
+        <h2
+          class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-br from-white via-slate-100 to-neutral-400 bg-clip-text text-transparent tracking-tighter mb-4">
+          Interview Question Generator
+        </h2>
+        <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+          Generate high-yield technical and behavioral questions curated by specialized engineering roles with full
+          expert sample solutions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- Left Column: Settings and Input -->
+        <div class="lg:col-span-5 flex flex-col justify-between glass-panel p-6 sm:p-8 rounded-3xl border border-white/[0.06]">
+
+  <div class="space-y-6">
+
+    <!-- Profession -->
+    <div>
+      <label
+        for="role"
+        class="block font-mono text-xs font-semibold uppercase tracking-wider text-emerald-300 mb-2.5">
+        Enter Profession
+      </label>
+
+      <input
+        type="text"
+        id="role"
+        placeholder="e.g. Doctor, Accountant, Teacher, Data Analyst"
+        class="w-full px-4 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08]
+        text-white placeholder:text-gray-500
+        focus:outline-none focus:border-emerald-500/40
+        focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300">
+    </div>
+
+    <!-- Difficulty -->
+    <div>
+      <label
+        for="difficulty"
+        class="block font-mono text-xs font-semibold uppercase tracking-wider text-emerald-300 mb-2.5">
+        Set Challenge Tier
+      </label>
+
+      <select
+        id="difficulty"
+        class="w-full px-4 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08]
+        text-white focus:outline-none focus:border-emerald-500/40
+        focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300">
+
+        <option value="Easy" text="black">Easy</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="Hard">Hard</option>
+
+      </select>
+    </div>
+
+  </div>
+
+  <button
+    id="generate-questions-btn"
+    class="w-full mt-8 py-4 rounded-xl bg-gradient-to-r
+    from-emerald-600 to-cyan-500
+    hover:from-emerald-500 hover:to-cyan-400
+    active:scale-[0.99]
+    font-display font-bold text-white
+    transition-all duration-300
+    shadow-lg shadow-emerald-950/30">
+
+    Generate AI Interview Questions
+
+  </button>
+
+</div>
+
+        <!-- Right Column: Outputs -->
+        <div
+          class="lg:col-span-7 flex flex-col justify-center glass-panel p-6 sm:p-8 rounded-3xl border border-white/[0.06] relative min-h-[400px]">
+
+          <!-- Idle State -->
+          <div id="interview-idle-state" class="w-full flex flex-col items-center justify-center text-center p-6">
+            <div
+              class="w-14 h-14 rounded-full bg-emerald-950/20 border border-emerald-500/10 flex items-center justify-center text-emerald-400 mb-5 animate-float">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2H18a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
+                <path d="M9 10h6" />
+                <path d="M9 14h6" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2">Scenario Sandbox</h3>
+            <p class="text-xs sm:text-sm text-gray-400 max-w-sm leading-relaxed">
+              Choose a job path and click <strong>"Generate Sample Questions"</strong> to load tailored technical
+              scenarios with comprehensive professional code and concepts.
+            </p>
+          </div>
+
+          <!-- Launcher Loader -->
+          <div id="interview-loader" class="hidden w-full flex flex-col items-center justify-center text-center py-10">
+            <div class="relative w-20 h-20 mb-8">
+              <div class="absolute inset-0 rounded-full border-4 border-emerald-500/10"></div>
+              <div
+                class="absolute inset-0 rounded-full border-4 border-t-emerald-500 border-r-transparent animate-spin [animation-duration:1.2s]">
+              </div>
+              <div class="absolute inset-3 rounded-full border-4 border-cyan-500/10"></div>
+              <div
+                class="absolute inset-3 rounded-full border-4 border-b-cyan-400 border-l-transparent animate-spin [animation-duration:0.8s] [animation-direction:reverse]">
+              </div>
+            </div>
+            <p class="font-mono text-xs font-semibold uppercase tracking-widest text-emerald-400 animate-pulse">
+              Assembling Interview Standards...</p>
+            <div class="text-[10px] text-gray-500 mt-3 font-mono" id="interview-loader-step">Generating Solution
+              Matrix...</div>
+          </div>
+
+          <!-- Result Cards List -->
+          <div id="interview-results-container" class="hidden w-full space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-white/[0.06] mb-2">
+              <h4 id="interview-results-role-badge"
+                class="font-display font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Frontend Developer Questions
+              </h4>
+              <span id="interview-results-diff-badge"
+                class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest bg-emerald-950/40 px-2.0 py-0.5 rounded border border-emerald-800/30">INTERMEDIATE</span>
+            </div>
+
+            <!-- Output cards are injected here -->
+            <div id="interview-cards" class="space-y-4">
+              <!-- Loaded Dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dedicated Premium Mock Interview Chatbot Section -->
+    <section id="mock-chatbot-section" class="w-full mb-20 relative">
+      <div class="absolute -top-1/2 -right-1/2 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none">
+      </div>
+
+      <!-- Section Header -->
+      <div class="text-center mb-12 text-center flex flex-col items-center">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-amber-400 uppercase bg-amber-950/40 px-3 py-1 rounded-full border border-amber-800/30 mb-3">
+          Realtime Cognitive Simulator
+        </span>
+        <h2
+          class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-br from-white via-slate-100 to-neutral-400 bg-clip-text text-transparent tracking-tighter mb-4">
+          Mock Interview Chatbot
+        </h2>
+        <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+          Practice conversational behavioral or tough technical mock sessions. Get evaluated in real-time by different
+          AI interview personas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- Left Column: Persona selection and controls -->
+        <div
+          class="lg:col-span-4 flex flex-col justify-between glass-panel p-6 sm:p-7 rounded-3xl border border-white/[0.06]">
+          <div class="space-y-6">
+            <div>
+              <label for="chatbot-persona-select"
+                class="block font-mono text-xs font-semibold uppercase tracking-wider text-amber-300 mb-2.5">
+                Select Coach Persona:
+              </label>
+              <div
+                class="relative rounded-xl overflow-hidden bg-white/[0.02] border border-white/[0.08] focus-within:border-amber-500/40 transition-all">
+                <select id="chatbot-persona-select"
+                  class="w-full bg-transparent px-4 py-3.5 text-sm text-white focus:outline-none cursor-pointer appearance-none">
+                  <option class="bg-[#0c0a1a] text-white" value="tough">Sarah - Tough Tech Lead (Amazon)</option>
+                  <option class="bg-[#0c0a1a] text-white" value="empathetic">Marcus - Empathetic Talent Partner (Stripe)
+                  </option>
+                  <option class="bg-[#0c0a1a] text-white" value="system">Elena - Systems & Architecture Guru</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-amber-400">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Persona description and statistics card -->
+            <div class="p-4 bg-amber-950/25 border border-amber-500/10 rounded-2xl">
+              <h4 id="persona-display-name" class="font-display font-bold text-sm text-amber-300 mb-1">Sarah - Tough
+                Tech Lead</h4>
+              <p id="persona-display-desc" class="text-xs text-gray-400 leading-relaxed">
+                Focuses strictly on architectural scaling bounds, operational matrices, edge cases, and structural
+                logic. Expect tough follow-ups!
+              </p>
+              <div
+                class="mt-3 pt-3 border-t border-white/[0.05] flex justify-between items-center text-[10px] font-mono text-gray-500">
+                <span>AGGRESSION: HIGH</span>
+                <span>EVALUATION: OBJECTIVE</span>
+              </div>
+            </div>
+
+            <!-- Suggested topics list -->
+            <div>
+              <label
+                class="block font-mono text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2.5">Suggested
+                starters:</label>
+              <div class="flex flex-col gap-2">
+                <button
+                  class="chat-starter-btn w-full text-left px-3 py-2 bg-white/[0.01] hover:bg-white/[0.03] border border-white/[0.06] rounded-xl text-xs text-gray-300 hover:text-white transition cursor-pointer">
+                  "Start a clean System Design drill."
+                </button>
+                <button
+                  class="chat-starter-btn w-full text-left px-3 py-2 bg-white/[0.01] hover:bg-white/[0.03] border border-white/[0.06] rounded-xl text-xs text-gray-300 hover:text-white transition cursor-pointer">
+                  "Ask me a difficult behavioral question."
+                </button>
+                <button
+                  class="chat-starter-btn w-full text-left px-3 py-2 bg-white/[0.01] hover:bg-white/[0.03] border border-white/[0.06] rounded-xl text-xs text-gray-300 hover:text-white transition cursor-pointer">
+                  "Evaluate my answer response format."
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button id="reset-chat-btn"
+            class="w-full mt-6 py-3 rounded-xl border border-white/[0.1] hover:bg-white/[0.02] text-xs font-mono font-bold tracking-wider text-gray-400 hover:text-white transition cursor-pointer">
+            RESET INTERVIEW STATE
+          </button>
+        </div>
+
+        <!-- Right Column: Interactive Chat Interface -->
+        <div
+          class="lg:col-span-8 glass-panel rounded-3xl border border-white/[0.06] flex flex-col h-[520px] overflow-hidden relative">
+
+          <!-- Chat Header Info -->
+          <div class="px-6 py-4 border-b border-white/[0.06] flex items-center justify-between bg-white/[0.01]/40">
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <div
+                  class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </div>
+                <span
+                  class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-[#030014] rounded-full animate-pulse"></span>
+              </div>
+              <div>
+                <h4 id="chat-header-persona-name" class="font-display font-bold text-sm text-white">Sarah (Amazon Tech
+                  Lead)</h4>
+                <p class="text-[10px] text-gray-500 font-mono">SIMULATION CO-PILOT • REAL-TIME FEEDBACK</p>
+              </div>
+            </div>
+
+            <span
+              class="text-[10px] font-mono font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-2.5 py-1 rounded-md">
+              LIVE HARNESS
+            </span>
+          </div>
+
+          <!-- Scrollable Message Area -->
+          <div id="chat-messages-area" class="flex-grow overflow-y-auto p-6 space-y-4">
+            <!-- Dynamically populated bubble elements -->
+
+            <!-- Dummy Initial AI Message -->
+            <div class="flex items-start gap-3 max-w-[85%]">
+              <div
+                class="w-7 h-7 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-[10px] font-bold text-amber-300 shrink-0">
+                AI</div>
+              <div
+                class="p-3.5 bg-white/[0.03] border border-white/[0.05] rounded-r-2xl rounded-bl-2xl text-xs sm:text-sm text-gray-200 leading-relaxed shadow-sm">
+                Welcome to your mock interview session! I'm Sarah, a Principal Engineer. Let's make this highly
+                effective. Tell me about a time you had to deliver a system when your requirements were highly
+                ambiguous.
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Typing Animation Indicator -->
+          <div id="chat-typing-indicator"
+            class="hidden px-6 py-2.5 bg-white/[0.01]/10 flex items-center gap-2 border-t border-white/[0.03]">
+            <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mr-1">Interviewer is
+              typing</span>
+            <div class="flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:0.2s]"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:0.4s]"></span>
+            </div>
+          </div>
+
+          <!-- Chat Form Input Area -->
+          <div class="p-4 border-t border-white/[0.06] bg-[#030014]/60">
+            <form id="chat-form" class="flex gap-3">
+              <input id="chat-input-text" type="text"
+                class="flex-1 bg-white/[0.02] border border-white/[0.08] focus:border-amber-500/40 focus:shadow-[0_0_15px_rgba(245,158,11,0.1)] rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none"
+                placeholder="Type your structured professional answer here..." />
+
+              <button type="submit"
+                class="px-5 py-3 rounded-xl bg-gradient-to-r from-amber-600 to-orange-500 hover:from-amber-500 hover:to-orange-400 text-white font-display font-semibold text-sm transition-all duration-300 shadow-md shadow-amber-950/20 active:scale-[0.98] cursor-pointer flex items-center gap-1.5">
+                <span>Send</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polyline points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dedicated Premium Footer Section -->
+  <footer class="w-full border-t border-white/[0.05] mt-24 relative z-10 bg-[#030014]/65 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/[0.05]">
+        <!-- Left: Brand info with simple descriptions -->
+        <div class="text-center md:text-left space-y-2.5">
+          <div class="flex items-center gap-2 justify-center md:justify-start">
+            <div
+              class="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+              </svg>
+            </div>
+            <span class="font-display font-bold text-base text-white tracking-wide">AI Coach Ecosystem</span>
+          </div>
+          <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
+            Professional optimization engine designed to elevate tech careers, parse compliance indices, and run
+            cognitive simulation.
+          </p>
+        </div>
+
+        <!-- Right: Social Networks -->
+        <div class="flex items-center gap-4">
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/dharmi-sukhadiya-5a1b6b385/" target="_blank" rel="noopener noreferrer"
+            class="p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.08] text-gray-400 hover:text-purple-300 hover:bg-purple-500/10 hover:border-purple-500/20 active:scale-95 transition-all duration-300"
+            aria-label="LinkedIn Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect width="4" height="12" x="2" y="9" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <!-- GitHub -->
+          <a href="https://github.com/Dharmi-sukhadiya" target="_blank" rel="noopener noreferrer"
+            class="p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.08] text-gray-400 hover:text-purple-300 hover:bg-purple-500/10 hover:border-purple-500/20 active:scale-95 transition-all duration-300"
+            aria-label="GitHub Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Inner bottom segment: copyright text -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 text-center sm:text-left">
+        <p class="text-[11px] font-mono text-gray-500 uppercase tracking-widest">
+          © 2026 AI RESUME + INTERVIEW COACH • MULTI-MODULE SIMULATION
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Core -->
+  <script src="./script.js"></script>
+</body>
+
+</html>

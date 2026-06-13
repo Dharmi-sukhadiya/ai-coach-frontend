@@ -1,0 +1,6 @@
+{
+  "name": "AI Resume & Interview Coach",
+  "description": "Improve your resume, generate interview questions, and optimize your LinkedIn profile using AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
