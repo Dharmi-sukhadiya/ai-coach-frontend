@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   async function analyzeResumeWithAI(resumeText, targetRole) {
   try {
-    const response = await fetch('${import.meta.env.VITE_API_URL}/api/analyze-resume', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/analyze-resume`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -365,7 +365,7 @@ Skills: Web dev, CSS, HTML, JavaScript, Git, Team Player.`;
     headlineResultsContainer.classList.add('animate-fadeIn');
 
     try {
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/headlines', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/headlines`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -476,7 +476,7 @@ const interviewDiffBadge =document.getElementById('interview-results-diff-badge'
 
  async function generateQuestions(role, difficulty) {
 
-  const response = await fetch('${import.meta.env.VITE_API_URL}/api/interview-questions', {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/interview-questions`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -768,7 +768,7 @@ generateQuestionsBtn.addEventListener('click', async () => {
       let feedback;
 
       try {
-        const response = await fetch('${import.meta.env.VITE_API_URL}/api/chat', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
